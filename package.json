@@ -17,7 +17,13 @@
     }
   ],
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "~1.9.0",
+    "matchdep": "~0.3.0",
+    "grunt": "~0.4.2",
+    "mocha": "~1.17.1",
+    "grunt-contrib-jshint": "~0.8.0"
+  },
   "main": "./lib/shien.js",
   "scripts": {
     "test": "grunt test"
