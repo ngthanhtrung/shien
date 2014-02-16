@@ -5,67 +5,6 @@ var expect = require('chai').expect,
 
 describe('shien .core', function () {
 
-    describe('.define', function () {
-
-        it('should assign property to object', function () {
-            var obj = {};
-            expect(obj.foo).to.be.undefined;
-            shien.define(obj, 'foo', 'bar');
-            expect(obj.foo).to.equal('bar');
-        });
-
-        it('should assign property which is not able to be deleted', function () {
-            var obj = {};
-            shien.define(obj, 'foo', 'bar');
-            delete obj.bar;
-            expect(obj.foo).to.equal('bar');
-        });
-
-        it('should assign property which is not able to be changed', function () {
-            var obj = {};
-            shien.define(obj, 'foo', 'bar');
-            try {
-                obj.foo = 'qux';
-            } catch (e) {
-                if (e.type !== 'strict_read_only_property') {
-                    throw e;
-                }
-            }
-            expect(obj.foo).to.equal('bar');
-        });
-
-        it('should assign enumerable property correctly', function () {
-            /* jshint forin: false */
-
-            var obj = {},
-                props = [];
-
-            shien.define(obj, 'foo', 'bar');
-
-            for (var prop in obj) {
-                props.push(prop);
-            }
-
-            expect(props).to.include('foo');
-        });
-
-        it('should assign non-enumerable property correctly', function () {
-            /* jshint forin: false */
-
-            var obj = {},
-                props = [];
-
-            shien.define(obj, 'foo', 'bar', true);
-
-            for (var prop in obj) {
-                props.push(prop);
-            }
-
-            expect(props).to.not.include('foo');
-        });
-
-    });
-
     describe('.assign', function () {
 
         it('should assign attributes from source object to destination object ' +
