@@ -3,7 +3,7 @@
 var expect = require('chai').expect,
     shien = require('../lib/shien');
 
-describe('shien .core', function () {
+describe('core', function () {
 
     describe('.assign', function () {
 

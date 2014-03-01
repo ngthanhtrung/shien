@@ -1,9 +1,9 @@
 'use strict';
 
 var expect = require('chai').expect,
-    SortedMap = require('../lib/shien').SortedMap;
+    SortedMap = require('../../lib/shien').collection.SortedMap;
 
-describe('shien .SortedMap', function () {
+describe('collection .SortedMap', function () {
 
     describe('#get', function () {
 
