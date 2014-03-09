@@ -3,7 +3,7 @@
 var expect = require('chai').expect,
     SortedMap = require('../../lib/shien').collection.SortedMap;
 
-describe('collection .SortedMap', function () {
+describe('collection.SortedMap', function () {
 
     describe('#get', function () {
 

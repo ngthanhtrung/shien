@@ -7,19 +7,30 @@
     "utility",
     "library"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/MeoGuru/shien.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MeoGuru/shien/issues"
+  },
   "licenses": [
     {
       "type": "MIT",
       "url": "http://en.wikipedia.org/wiki/MIT_License"
     }
   ],
+  "readmeFilename": "README.md",
   "dependencies": {},
   "devDependencies": {
+    "matchdep": "~0.3.0",
+    "grunt": "~0.4.3",
+    "grunt-contrib-jshint": "~0.8.0",
     "mocha": "~1.17.1",
     "chai": "~1.9.0",
-    "matchdep": "~0.3.0",
-    "grunt": "~0.4.2",
-    "grunt-contrib-jshint": "~0.8.0"
+    "blanket": "~1.1.6",
+    "travis-cov": "~0.2.5",
+    "grunt-mocha-test": "~0.9.4"
   },
   "main": "./lib/shien.js",
   "scripts": {
@@ -27,15 +38,15 @@
   },
   "engines": [
     {
-      "node": ">= 0.8.0"
+      "node": ">= 0.10.0"
     }
   ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/meoguru/shien.git"
-  },
-  "readmeFilename": "README.md",
-  "bugs": {
-    "url": "https://github.com/meoguru/shien/issues"
+  "config": {
+    "blanket": {
+      "pattern": "lib"
+    },
+    "travis-cov": {
+      "threshold": 90
+    }
   }
 }

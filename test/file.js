@@ -4,13 +4,14 @@ var path = require('path'),
     expect = require('chai').expect,
     shien = require('../lib/shien');
 
-describe('.file', function () {
+describe('file', function () {
+
+    var root = path.join(__dirname, 'assets/file/traverse');
 
     describe('.traverse', function () {
 
         it('should list all sub-directories', function (cb) {
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                dirs = [],
+            var dirs = [],
                 t = shien.file.traverse(root);
 
             t.on('dir', function (dir) {
@@ -30,8 +31,7 @@ describe('.file', function () {
         });
 
         it('should list all files', function (cb) {
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                files = [],
+            var files = [],
                 t = shien.file.traverse(root);
 
             t.on('file', function (file) {
@@ -54,8 +54,7 @@ describe('.file', function () {
         it('should ignore directories and files ' +
                 'which follow `ignore` option', function (cb) {
 
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                dirs = [],
+            var dirs = [],
                 files = [],
                 t = shien.file.traverse(root, { ignore: /-2(\..*)?$/ });
 
@@ -86,8 +85,7 @@ describe('.file', function () {
         it('should include only files ' +
                 'which follow `match` option', function (cb) {
 
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                dirs = [],
+            var dirs = [],
                 files = [],
                 t = shien.file.traverse(root, { match: /-1(\.(txt|html|json))?$/ });
 
@@ -118,8 +116,7 @@ describe('.file', function () {
         });
 
         it('should prefer `ignore` option to `match` option', function (cb) {
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                dirs = [],
+            var dirs = [],
                 files = [],
                 t = shien.file.traverse(root, {
                     ignore: /-1(\..*)?$/,
@@ -148,8 +145,7 @@ describe('.file', function () {
     describe('.traverseSync', function () {
 
         it('should list all files', function () {
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                files = shien.file.traverseSync(root);
+            var files = shien.file.traverseSync(root);
 
             files.sort();
             expect(files).to.deep.equal([
@@ -164,8 +160,7 @@ describe('.file', function () {
         it('should ignore directories and files ' +
                 'which follow `ignore` option', function () {
 
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                files = shien.file.traverseSync(root, { ignore: /-2(\..*)?$/ });
+            var files = shien.file.traverseSync(root, { ignore: /-2(\..*)?$/ });
 
             files.sort();
             expect(files).to.deep.equal([
@@ -178,8 +173,7 @@ describe('.file', function () {
         it('should include only files ' +
                 'which follow `match` option', function () {
 
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                files = shien.file.traverseSync(root, { match: /-1(\.(txt|html|json))?$/ });
+            var files = shien.file.traverseSync(root, { match: /-1(\.(txt|html|json))?$/ });
 
             files.sort();
             expect(files).to.deep.equal([
@@ -190,8 +184,7 @@ describe('.file', function () {
         });
 
         it('should prefer `ignore` option to `match` option', function () {
-            var root = path.join(__dirname, 'assets/file/traverse'),
-                files = shien.file.traverseSync(root, {
+            var files = shien.file.traverseSync(root, {
                     ignore: /-1(\..*)?$/,
                     match: /^file-[12]\..*$/
                 });

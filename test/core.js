@@ -1,9 +1,45 @@
 'use strict';
 
-var expect = require('chai').expect,
+var path = require('path'),
+    expect = require('chai').expect,
     shien = require('../lib/shien');
 
 describe('core', function () {
+
+    describe('.load', function () {
+
+        var root = path.join(__dirname, 'assets/core/load');
+
+        it('should return `undefined` if module was not found', function () {
+            var notFound = shien.load(root + '/not-found');
+            expect(notFound).to.be.undefined;
+        });
+
+        it('should load module like `require()` if module exists', function () {
+            var entry = shien.load(root + '/entry');
+            expect(entry).not.to.be.undefined;
+        });
+
+        it('should throw error if there is any exception in loaded module', function () {
+            try {
+                shien.load(root + '/bad-entry');
+            } catch (err) {
+                expect(err).not.to.be.undefined;
+            }
+        });
+
+        it('should load main module only if it was found, even in `multi` mode', function () {
+            var exporteds = shien.load(root + '/entry', { multi: true });
+            expect(exporteds.length).to.equal(1);
+        });
+
+        it('should search for and load multiple modules ' +
+                'if `multi` option was set and main module was not found', function () {
+            var exporteds = shien.load(root + '/multi', { multi: true });
+            expect(exporteds).to.be.deep.equal([ 1, 2, 3 ]);
+        });
+
+    });
 
     describe('.assign', function () {
 
