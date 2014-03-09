@@ -1,11 +1,8 @@
 {
   "name": "shien",
-  "version": "0.0.1",
-  "description": "Just a simple Node.JS utility library",
-  "author": "Meo <meo@lozi.vn> (http://arvernorix.com)",
-  "contributors": [
-    "Meo <meo@lozi.vn> (http://arvernorix.com)"
-  ],
+  "version": "0.0.2",
+  "description": "Simple utility library",
+  "author": "Meo <i@meo.guru> (http://meo.guru)",
   "keywords": [
     "utility",
     "library"
@@ -35,10 +32,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/arvernorix/shien.git"
+    "url": "git://github.com/meoguru/shien.git"
   },
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/arvernorix/shien/issues"
+    "url": "https://github.com/meoguru/shien/issues"
   }
 }

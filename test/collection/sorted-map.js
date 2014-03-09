@@ -29,23 +29,23 @@ describe('collection .SortedMap', function () {
         });
 
         it('should add new item if specified key does not exist', function () {
-            var map = new SortedMap();
-            expect(map.count).to.equal(0);
+            var map = new SortedMap;
+            expect(map.length).to.equal(0);
             map.put('one', 1);
             expect(map.get('one')).to.equal(1);
-            expect(map.count).to.equal(1);
+            expect(map.length).to.equal(1);
         });
 
         it('should replace old item if specified key existed', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('one', 2);
             map.put('one', 1);
             expect(map.get('one')).to.equal(1);
-            expect(map.count).to.equal(1);
+            expect(map.length).to.equal(1);
         });
 
         it('should return old value if specified key existed', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('one', 2);
             expect(map.put('one', 1)).to.equal(2);
         });
@@ -55,21 +55,21 @@ describe('collection .SortedMap', function () {
     describe('#remove', function () {
 
         it('should do nothing if specified key does not exist', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             expect(map.remove('hello')).to.be.undefined;
-            expect(map.count).to.equal(0);
+            expect(map.length).to.equal(0);
         });
 
         it('should remove item if specified key existed', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('hello', 'world');
             map.remove('hello');
             expect(map.get('hello')).to.be.undefined;
-            expect(map.count).to.equal(0);
+            expect(map.length).to.equal(0);
         });
 
         it('should return old value if specified key existed', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('hello', 'world');
             expect(map.remove('hello')).to.equal('world');
         });
@@ -79,13 +79,13 @@ describe('collection .SortedMap', function () {
     describe('#hasKey', function () {
 
         it('should return `true` if specified key existed', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('hello', 'world');
             expect(map.hasKey('hello')).to.be.true;
         });
 
         it('should return `false` if specified key does not exist', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('hello', 'world');
             expect(map.hasKey('hi')).to.be.false;
         });
@@ -95,13 +95,13 @@ describe('collection .SortedMap', function () {
     describe('#hasValue', function () {
 
         it('should return `true` if specified value existed', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('hello', 'world');
             expect(map.hasValue('world')).to.be.true;
         });
 
         it('should return `false` if specified value does not exist', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('hello', 'world');
             expect(map.hasValue('everyone')).to.be.false;
         });
@@ -111,7 +111,7 @@ describe('collection .SortedMap', function () {
     describe('#allKeys', function () {
 
         it('should concatenate all keys in adding order (replacing not counted)', function () {
-            var map = new SortedMap();
+            var map = new SortedMap;
             map.put('one', 4);
             map.put('two', 3);
             map.put('three', 2);
@@ -124,7 +124,7 @@ describe('collection .SortedMap', function () {
     describe('#each', function () {
 
         it('should iterate through all values and keys', function () {
-            var map = new SortedMap(),
+            var map = new SortedMap,
                 keys = [],
                 values = [];
 
@@ -146,7 +146,7 @@ describe('collection .SortedMap', function () {
     describe('#eachKey', function () {
 
         it('should iterate through all keys', function () {
-            var map = new SortedMap(),
+            var map = new SortedMap,
                 keys = [];
 
             map.put('one', 1);
@@ -165,7 +165,7 @@ describe('collection .SortedMap', function () {
     describe('#eachValue', function () {
 
         it('should iterate through all values', function () {
-            var map = new SortedMap(),
+            var map = new SortedMap,
                 values = [];
 
             map.put('one', 1);
