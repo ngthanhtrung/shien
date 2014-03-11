@@ -6,10 +6,7 @@ var path = require('path'),
 module.exports = function (grunt) {
     /* jshint scripturl: true */
 
-    // Load all grunt tasks
-    require('matchdep')
-        .filterDev('grunt-*')
-        .forEach(grunt.loadNpmTasks);
+    require('load-grunt-tasks')(grunt);
 
     grunt.initConfig({
         jshint: {
@@ -18,10 +15,10 @@ module.exports = function (grunt) {
             },
             all: [
                 '{lib,test}/**/*.js',
-                'Gruntfile.js'
+                'Gruntfile.js',
             ]
         },
-        mochaTest: { // jshint ignore: line
+        mochaTest: {
             all: {
                 options: {
                     require: function instrumentFiles() {
@@ -35,13 +32,10 @@ module.exports = function (grunt) {
                     '!test/assets/**'
                 ]
             },
-            'html-cov': {
+            'htmlCov': {
                 options: {
                     reporter: 'html-cov',
-                    // use the quiet flag to suppress the mocha console output
                     quiet: true,
-                    // specify a destination file to capture the mocha
-                    // output (the quiet option does not suppress this)
                     captureFile: 'coverage.html'
                 },
                 src: [
@@ -49,7 +43,7 @@ module.exports = function (grunt) {
                     '!test/assets/**'
                 ]
             },
-            'travis-cov': {
+            'travisCov': {
                 options: {
                     reporter: 'travis-cov'
                 },
@@ -78,15 +72,13 @@ module.exports = function (grunt) {
         'jshint:all',
 
         'mochaTest:all',
-        'mochaTest:html-cov',
+        'mochaTest:htmlCov',
 
         'coverage:before',
-        'mochaTest:travis-cov',
+        'mochaTest:travisCov',
         'coverage:after'
     ]);
 
-    grunt.registerTask('default', 'Run tests and build', [
-        'test'
-    ]);
+    grunt.registerTask('default', [ 'test' ]);
 
 };

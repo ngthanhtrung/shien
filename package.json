@@ -23,7 +23,7 @@
   "readmeFilename": "README.md",
   "dependencies": {},
   "devDependencies": {
-    "matchdep": "~0.3.0",
+    "load-grunt-tasks": "^0.4.0",
     "grunt": "~0.4.3",
     "grunt-contrib-jshint": "~0.8.0",
     "mocha": "~1.17.1",
@@ -42,9 +42,6 @@
     }
   ],
   "config": {
-    "blanket": {
-      "pattern": "lib"
-    },
     "travis-cov": {
       "threshold": 90
     }

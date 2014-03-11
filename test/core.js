@@ -36,7 +36,7 @@ describe('core', function () {
         it('should search for and load multiple modules ' +
                 'if `multi` option was set and main module was not found', function () {
             var exporteds = shien.load(root + '/multi', { multi: true });
-            expect(exporteds).to.be.deep.equal([ 1, 2, 3 ]);
+            expect(exporteds.length).to.equal(3);
         });
 
     });
